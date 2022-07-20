@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Eligmaltd\\GocryptoPayPhp\\": "src/"
+            "Eligmaltd\\GoCryptoPayPHP\\": "src/"
         }
     },
     "authors": [
@@ -16,5 +16,5 @@
             "name": "Eligma Ltd."
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
