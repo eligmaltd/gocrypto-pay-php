@@ -1,0 +1,7 @@
+{
+  "name": "eligmaltd/gocrypto-pay-sdk",
+  "description": "GoCrypto Pay SDK",
+  "require": {
+    "php": ">=7.4"
+  }
+}
