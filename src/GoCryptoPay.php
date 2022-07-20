@@ -131,21 +131,11 @@ class GoCryptoPay {
 	 * @var $data [items][price] integer, optional
 	 * @var $data [items][discount] integer, optional
 	 * @var $data [items][tax] integer, optional
-	 * @var $data [payment_token] string, optional
 	 * @var $data [callback_endpoint] string, required
 	 */
 	public function generateCharge($data = array()) {
 		try {
-			$paymentToken = $data['payment_token'] ? $data['payment_token'] : $this->common->generatePaymentToken();
-			$callbackEndpoint = $data['callback_endpoint'];
 			$language = $data['language'];
-
-			// check if url has query string
-			if (parse_url($callbackEndpoint, PHP_URL_QUERY)) {
-				$callbackEndpoint .= '&';
-			} else {
-				$callbackEndpoint .= '?';
-			}
 
 			// generate charge
 			$chargeData = [
@@ -154,8 +144,7 @@ class GoCryptoPay {
 				'order_number' => $data['order_number'],
 				'amount' => $data['amount'],
 				'customer_email' => $data['customer_email'],
-				'payment_token' => $paymentToken,
-				'callback_endpoint' => $callbackEndpoint . 'payment_token=' . $paymentToken
+				'callback_endpoint' => $data['callback_endpoint']
 			];
 
 			if (array_key_exists('currency_code', $data)) {
@@ -179,7 +168,6 @@ class GoCryptoPay {
 
 			return [
 				'charge_id' => $responseData['charge_id'],
-				'payment_token' => $paymentToken,
 				'redirect_url' => $responseData['redirect_url']
 			];
 		} catch (RequestException $e) {
