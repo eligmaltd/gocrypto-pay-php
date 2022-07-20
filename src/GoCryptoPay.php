@@ -4,6 +4,7 @@
 
 namespace Eligmaltd\GoCryptoPayPHP;
 
+use GuzzleHttp;
 use GuzzleHttp\Exception\RequestException;
 
 class GoCryptoPay {
