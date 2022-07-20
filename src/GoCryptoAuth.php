@@ -2,6 +2,8 @@
 // Author (c) Daniel Jaušovec, Eligma Ltd.
 // Version: GOC-001:2022-07-07
 
+namespace Eligmaltd\GoCryptoPayPHP;
+
 use GuzzleHttp\Exception\RequestException;
 
 class GoCryptoAuth {

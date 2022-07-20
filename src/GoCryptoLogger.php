@@ -2,6 +2,8 @@
 // Author (c) Daniel Jaušovec, Eligma Ltd.
 // Version: EP-001:2022-07-07
 
+namespace Eligmaltd\GoCryptoPayPHP;
+
 class GoCryptoLogger {
 	private $logFile;
 

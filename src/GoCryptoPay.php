@@ -2,12 +2,9 @@
 // Author (c) Daniel Jaušovec, Eligma Ltd.
 // Version: GOC-001:2022-07-07
 
-use GuzzleHttp\Exception\RequestException;
+namespace Eligmaltd\GoCryptoPayPHP;
 
-require_once('vendor/autoload.php');
-require_once('GoCryptoLogger.php');
-require_once('GoCryptoCommon.php');
-require_once('GoCryptoAuth.php');
+use GuzzleHttp\Exception\RequestException;
 
 class GoCryptoPay {
 	public $logger;
