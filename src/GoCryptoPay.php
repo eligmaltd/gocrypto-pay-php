@@ -1,6 +1,6 @@
 <?php
 // Author (c) Daniel Jaušovec, Eligma Ltd.
-// Version: GOC-001:2022-07-07
+// Version: GOC-002:2023-04-04
 
 namespace Eligmaltd\GoCryptoPayPHP;
 
@@ -131,6 +131,15 @@ class GoCryptoPay {
 	 * @var $data [items][price] integer, optional
 	 * @var $data [items][discount] integer, optional
 	 * @var $data [items][tax] integer, optional
+	 * @var $data [kyc] object, optional
+	 * @var $data [kyc][email] string, required
+	 * @var $data [kyc][first_name] string, required
+	 * @var $data [kyc][last_name] string, required
+	 * @var $data [kyc][country] string, required
+	 * @var $data [kyc][city] string, required
+	 * @var $data [kyc][zip_code] string, required
+	 * @var $data [kyc][address] string, required
+	 * @var $data [kyc][building_number] string, optional
 	 * @var $data [callback_endpoint] string, required
 	 */
 	public function generateCharge($data = array()) {
@@ -154,6 +163,10 @@ class GoCryptoPay {
 			if (array_key_exists('items', $data)) {
 				$chargeData['items'] = $data['items'];
 			}
+
+            if (array_key_exists('kyc', $data)) {
+                $chargeData['kyc'] = $data['kyc'];
+            }
 
 			$response = $this->client->request('POST', $this->endpoint . '/payments/charge/', [
 				'headers' => [
