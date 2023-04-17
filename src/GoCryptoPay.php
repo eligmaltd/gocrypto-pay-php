@@ -56,16 +56,18 @@ class GoCryptoPay {
 	 * Config Initialization
 	 *
 	 * @param string $host
+	 * @param string $skin
 	 *
 	 * @return mixed|string
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
-	public function config($host) {
+	public function config($host, $skin = '') {
 		try {
 			$response = $this->client->request('GET', $this->publicEndpoint . '/config/web-shop/', [
 				'headers' => [
 					'Content-Type' => 'application/json',
-					'X-WEB-SHOP-HOST' => $host
+					'X-WEB-SHOP-HOST' => $host,
+                    'X-WEB-SHOP-SKIN' => $skin
 				]
 			]);
 
